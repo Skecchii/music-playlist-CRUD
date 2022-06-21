@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || '4000'
+const PORT = normalizePort(process.env.PORT || '4000')
 const path = require('path')
 const morgan = require('morgan')
 const passport = require('passport')
