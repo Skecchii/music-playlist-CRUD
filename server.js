@@ -6,8 +6,6 @@ const passport = require('passport')
 const session = require('express-session')
 const methodOverride = require('method-override')
 
-const PORT = normalizePort(process.env.PORT || '4000')
-
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
 const playlistRoutes = require('./routes/playlistRoutes')
@@ -49,4 +47,6 @@ app.use((req,res, next) => {
     next()
 })
 
-app.listen(PORT)
+app.listen(process.env.PORT || 4000, () => {
+    console.log('listening on port: ' + process.env.PORT)
+})
