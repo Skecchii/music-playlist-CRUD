@@ -1,17 +1,19 @@
 {
   "name": "music-playlist-crud",
   "version": "1.0.0",
-  "description": "",
+  "description": "A playlist app for users to organize their favorite music tracks.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ogonz801/music-playlist-CRUD.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "heroku"
+  ],
+  "author": "Osvaldo Gonzalez",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ogonz801/music-playlist-CRUD/issues"
