@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit <%=  %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>New Playlist</title>
 </head>
 <style>
     body {
@@ -23,8 +24,13 @@
         margin-left: 70px;
     }
 
+    .new-playlist-form {
+        margin-left: 70px;
+        margin-top: -20px;
+    }
+
     .image {
-        margin-top: -30px;
+        margin-top: -35px;
         margin-left: 70px;
         margin-bottom: 20px;
         height: 160px;
@@ -33,13 +39,8 @@
         opacity: 50%;
     }
 
-    .edit-form {
-        margin-left: 70px;
-    }
-
-    .addBtn {
+    .createBtn {
         margin-left: 5px;
-        width: 40px;
         border-radius: 25px;
         font-size: 13px;
         height: 20px;
@@ -48,23 +49,7 @@
         border: none;
     }
 
-    .addBtn:hover {
-        background-color: rgb(96, 161, 0);
-        border: none;
-    }
-
-    .updateBtn {
-        margin-left: 5px;
-        width: 55px;
-        border-radius: 25px;
-        font-size: 13px;
-        height: 20px;
-        font-family: helvetica;
-        background-color: yellowgreen;
-        border: none;
-    }
-
-    .updateBtn:hover {
+    .createBtn:hover {
         background-color: rgb(96, 161, 0);
         border: none;
     }
@@ -75,22 +60,39 @@
         border: 0;
         font-size: 12px;
         height: 20px;
-        padding-left: 8px;
+        padding-left: 10px;
     }
 
+    .cancelBtn {
+        margin-left: 275px;
+        width: 55px;
+        border-radius: 25px;
+        font-size: 13px;
+        height: 20px;
+        font-family: helvetica;
+        background-color: yellowgreen;
+        border: none;
+    }
+
+    .cancelBtn:hover {
+        background-color: rgb(96, 161, 0);
+        border: none;
+    }
 </style>
 <%- include('../partials/sideNav') %>
 <body>
     <div class="title">
-        Edit <%= playlist.name %> playlist
+        Create a new playlist
     </div>
-    <div>
-        <div class="image">
-
-        </div>
-        <form class="edit-form" action="/playlist/<%= playlist._id %>?_method=PUT" method="POST">
-            <input type="text" name="name" value="<%= playlist.name %>">
-            <button class="updateBtn" type="submit">update</button>
+    <div class="image">
+    </div>
+    <form action="/user">
+        <button type="submit" class="cancelBtn">cancel</button>
+    </form>
+    <div class="new-playlist-form">
+        <form action="/playlist" method="POST">
+            <input type="text" name="name" placeholder="playlist name">
+            <button class="createBtn" type="submit">create</button>
         </form>
     </div>
 </body>

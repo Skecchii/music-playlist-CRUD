@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= user.name  %> Profile</title>
+</head>
+<style>
+        body {
+        align-items: center;
+        background-color: rgb(35, 35, 35);
+        height: 100vh;
+    }
+
+    .pfp {
+        height: 170px;
+        width: 170px;
+        background-color: lightgray;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left: 70px;
+        margin-top: -20px;
+        opacity: 50%;
+    }
+
+    .username {
+        color: white;
+        font-size: 36px;
+        font-family: Helvetica;
+        margin-left: 70px;
+        margin-top: -20px
+    }
+    
+    .btn {
+        margin-left: 300px;
+        display: inline-block;
+    }
+
+    .createBtn {
+        margin-left: 20px;
+        margin-top: -80px;
+    }
+
+    .logoutBtn {
+        background-color: yellowgreen;
+        width: 60px;
+        height: 20px;
+        margin-left: 650px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        border: none;
+        border-radius: 12px;
+        font-family: helvetica;
+    }
+
+    .logoutBtn:hover {
+        background-color: rgb(96, 161, 0);
+        border: none;
+    }
+
+    .createBtn {
+        margin-left: 70px;
+        margin-bottom: 25px;
+        border-radius: 25px;
+        font-size: 18px;
+        width: 150px;
+        height: 45px;
+        font-family: helvetica;
+        background-color: yellowgreen;
+        border: none;
+    }
+
+    .createBtn:hover {
+        background-color: rgb(96, 161, 0);
+        border: none;
+    }
+
+
+    .playlist-grid {
+        margin-left: 70px;
+        width: 70vw;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .image {
+        height: 160px;
+        width: 160px;
+        background-color: lightgray;
+        opacity: 50%;
+    }
+
+    a {
+        font-size: 28px;
+        font-family: arial;
+        color: white;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: yellowgreen;
+    }
+
+    .deleteBtn {
+        font-size: 30px;
+        margin-left: 135px;
+        opacity: 40%;
+        position: absolute;
+        top: 405px;
+        padding-top: -10px;
+        border: none;
+        background: none;
+    }
+
+    .deleteBtn:hover {
+        color: red;
+        border-radius: 7px;
+        border: none;
+    }
+
+    .editBtn {
+        margin-left: -3px;
+        border: none;
+        background: none;
+        font-size: 22px;
+        opacity: 40%;
+        position: absolute;
+        top: 415px;
+    }
+
+    .editBtn:hover {
+        color: darkgray;
+        border-radius: 7px;
+        border: none;
+    }
+
+</style>
+<%- include('../partials/sideNav') %>
+<body>
+    <div>
+        <form action="/logout">
+            <button class="logoutBtn btn" type="submit">logout</button>
+        </form>
+    </div>
+    <div class="pfp">
+        
+    </div>
+    <div class="username">
+        <h1><%= user.name %></h1>
+    </div>
+    <div>
+        <form action="/playlist/new">
+            <button class="createBtn btn" type="submit">add new playlist</button>
+        </form>
+    </div>
+    <div class="playlist-grid">
+        <% playlists.forEach(playlist => { %>
+            <div class="playlist-name">
+                <div class="image"></div>
+                <a href="/playlist/<%= playlist.id %>"><%= playlist.name %></a>
+                <form action="/playlist/<%= playlist._id %>?_method=DELETE" method="POST">
+                    <button class="deleteBtn" type="submit">x</button>
+                </form>
+                <div>
+                    <form action="/playlist/<%= playlist._id %>/edit">
+                        <button class="editBtn fa fa-edit" type="submit"></button>
+                    </form>
+                </div>
+            </div>
+    <% }) %>
+    </div>
+</body>
+</html>

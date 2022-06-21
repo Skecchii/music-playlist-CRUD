@@ -6,16 +6,16 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: process.env.GOOGLE_CALLBACK
+    callbackURL: process.env.GOOGLE_CALLBACK,
 },
-(accessToken, refreshToken, profile, cb) => {
-    User.findOne({ 'googleId': profile.id }, (err, user) => {
+(req, accessToken, refreshToken, profile, cb) => {
+    User.findOne({ googleId: profile.id }, (err, user) => {
         if (err) {return cb(err)}
         if (user) {
             return cb(null, user)
         } else {
-            const newUser = new User({
-                name: profile.name,
+            let newUser = new User({
+                name: profile.displayName,
                 googleId: profile.id
             })
             newUser.save((err) => {
@@ -32,7 +32,7 @@ passport.serializeUser( (user,done) => {
 })
 
 passport.deserializeUser( (id,done) => {
-    Student.findById(id, (err,user) => {
+    User.findById(id, (err,user) => {
         done(err, user)
     })
 })

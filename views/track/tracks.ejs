@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= playlist.name %></title>
+</head>
+<style>
+    body {
+        align-items: center;
+        background-color: rgb(35, 35, 35);
+        height: 100vh;
+    }
+
+    .image {
+        margin-top: -20px;
+        margin-left: 70px;
+        margin-bottom: 20px;
+        height: 160px;
+        width: 160px;
+        background-color: lightgray;
+        opacity: 50%;
+    }
+
+    .playlist-name {
+        color: white;
+        font-size: 50px;
+        font-family: helvetica;
+        font-weight:bolder;
+        margin-left: 250px;
+        margin-top: -70px;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        color: white;
+        font-family: helvetica;
+        margin-left: 70px;
+    }
+
+    .removeBtn {
+        color: white;
+        border: none;
+        background: none;
+    }
+
+    .removeBtn:hover {
+        color: red;
+        border-radius: 7px;
+        border: none;
+    }
+
+    .addBtn {
+        margin-left: 530px;
+        border-radius: 25px;
+        font-size: 15px;
+        width: 120px;
+        height: 30px;
+        font-family: helvetica;
+        background-color: yellowgreen;
+        border: none;
+        margin-bottom: -20px;
+    }
+
+    .addBtn:hover {
+        background-color: rgb(96, 161, 0);
+        border: none;
+    }
+
+    .playlist-table {
+        color: white;
+        margin-left: 70px;
+        margin-top: 12px;
+        font-size: 36px;
+    }
+
+    .remove-th {
+        border: 1px solid rgb(80, 80, 80);
+        width: 10%;
+    }
+
+    table {
+        width: 80vw;
+        border-collapse: collapse;
+    }
+
+    .title-image {
+        width: 50px;
+        height: 50px;
+        background-color:lightgray;
+        opacity: 50%;
+        margin-left: -65px;
+        margin-top: -5px;
+        margin-bottom: -58px;
+    }
+
+    td {
+        border: 1px solid rgb(80, 80, 80);
+        padding-left: 80px;
+        padding-top: 20px;
+        font-size: 28px;
+        font-family: helvetica;
+    }
+
+    p {
+        color: lightgray;
+        font-size: 18px;
+        margin-top: -2px
+    }
+
+    .song-title {
+        color: lightgray;
+        font-family: arial;
+        font-weight: lighter;
+        font-size: 18px;
+        position: absolute;
+        left: 80px;
+        top: 234px
+    }
+
+    .deleteBtn {
+        color: white;
+    }
+
+    .deleteBtn:hover {
+        color: red;
+    }
+</style>
+<%- include('../partials/sideNav') %>
+<body>
+    <div class="image">
+
+    </div>
+    <div class='playlist-name'>
+        <%= playlist.name%>
+    </div>
+    <div>
+        <form action="/track/new">
+            <button class="addBtn" type="submit">add new track</button>
+        </form>
+    </div>
+    <% if (playlist.tracks.length) { %>
+    <table class="playlist-table">
+        <thead>
+            <tr>
+                <th class="song-title">TITLE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% playlist.tracks.forEach(track => { %>
+                <tr>
+                    <td>
+                        <div class="title-image">
+
+                        </div>
+                        <%= track.song %>
+                        <p><%= track.artist %></p>
+                    </td>
+                    <th class="remove-th">
+                        <form action="/track/<%= track._id %>?_method=DELETE" method="POST">
+                            <button class="removeBtn" type="submit">X</button>
+                        </form>
+                    </th>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+    <% } else { %>
+        <h2>no tracks added</h2>
+        <% } %>
+</body>
+</html>

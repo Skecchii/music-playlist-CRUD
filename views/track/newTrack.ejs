@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit <%=  %></title>
+    <title>New Track</title>
 </head>
 <style>
     body {
@@ -18,23 +18,14 @@
         font-family: Helvetica;
         font-size: 30px;
         font-weight: 600;
-        margin-top: -30px;
+        margin-top: -10px;
         margin-bottom: 50px;
         margin-left: 70px;
     }
 
-    .image {
-        margin-top: -30px;
+    .new-track-form {
         margin-left: 70px;
-        margin-bottom: 20px;
-        height: 160px;
-        width: 160px;
-        background-color: lightgray;
-        opacity: 50%;
-    }
-
-    .edit-form {
-        margin-left: 70px;
+        margin-top: -20px;
     }
 
     .addBtn {
@@ -53,8 +44,8 @@
         border: none;
     }
 
-    .updateBtn {
-        margin-left: 5px;
+    .cancelBtn {
+        margin-left: 413px;
         width: 55px;
         border-radius: 25px;
         font-size: 13px;
@@ -64,7 +55,7 @@
         border: none;
     }
 
-    .updateBtn:hover {
+    .cancelBtn:hover {
         background-color: rgb(96, 161, 0);
         border: none;
     }
@@ -78,20 +69,22 @@
         padding-left: 8px;
     }
 
+    .artist-input {
+        margin-left: 10px;
+    }
 </style>
 <%- include('../partials/sideNav') %>
 <body>
     <div class="title">
-        Edit <%= playlist.name %> playlist
+        Add a new track
     </div>
-    <div>
-        <div class="image">
-
-        </div>
-        <form class="edit-form" action="/playlist/<%= playlist._id %>?_method=PUT" method="POST">
-            <input type="text" name="name" value="<%= playlist.name %>">
-            <button class="updateBtn" type="submit">update</button>
-        </form>
-    </div>
+    <form action="/playlist/<%= playlist.id %>">
+        <button class="cancelBtn">cancel</button>
+    </form>
+    <form class="new-track-form" action="/playlist/<%= playlist._id %>" method="POST">
+        <input class="song-input" type="text" name="song" placeholder="song name">
+        <input class="artist-input" type="text" name="artist" placeholder="artist">
+        <button class="addBtn" type="submit">add</button>
+    </form>
 </body>
 </html>

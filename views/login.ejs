@@ -6,8 +6,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
+<style>
+    body {
+        align-items: center;
+        background-color: rgb(35, 35, 35);
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .form {
+        background-color: #45374d;
+        border-radius: 20px;
+        box-sizing: border-box;
+        height: 500px;
+        padding: 20px;
+        width: 320px;
+    }
+
+    .title {
+        color: white;
+        font-family: Helvetica;
+        font-size: 30px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    .label {
+        font-family: arial;
+        color: white;
+    }
+
+    .inputs {
+        height: 50px;
+        position: relative;
+        width: 100%;
+    }
+
+    .input-one {
+        margin-top: 20px;
+    }
+
+    .input-two {
+        margin-top: 15px;
+    }
+
+    input {
+        background-color: lightgray;
+        border-radius: 12px;
+        border: 0;
+        box-sizing: border-box;
+        font-size: 12px;
+        height: 30px;
+        width: 100%;
+        padding-left: 10px;
+        margin-top: 10px;
+    }
+
+    button {
+        background-color: greenyellow;
+        width: 100%;
+        margin-top: 30px;
+        border-radius: 12px;
+        height: 25px;
+        border: none;
+    }
+
+    button:hover {
+        background-color: rgb(96, 161, 0)
+    }
+
+    .line-break {
+        border-bottom: 2px solid white;
+        margin-top: 160px;
+    }
+
+    .google-auth {
+        margin-top: 50px;
+    }
+
+    a {
+        color: white
+    }
+
+</style>
 <body>
-    <h1>Login</h1>
-    <a href="/auth/google">please</a>
+    <div class="form">
+        <div class="title">
+            Welcome
+        </div>
+        <div class="inputs">
+            <div class="input-one">
+                <label class="label">Username</label>
+                <input type="text" placeholder="Username">
+            </div>
+            <div class="input-two">
+                <label class="label">Password</label>
+                <input type="password" placeholder="Password">
+            </div>
+            <button type="submit">Log in</button>
+        </div>
+        <div class="line-break">
+
+        </div>
+        <div class="google-auth">
+            <a href="/auth/google">Sign In With Google</a>
+        </div>
+    </div>
 </body>
 </html>

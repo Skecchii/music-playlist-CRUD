@@ -1,10 +1,11 @@
 const express = require('express')
 const app = express()
-const PORT = 4000
+const PORT = process.env.PORT || '4000'
 const path = require('path')
 const morgan = require('morgan')
 const passport = require('passport')
 const session = require('express-session')
+const methodOverride = require('method-override')
 
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
+app.use(methodOverride('_method'))
 
 app.use(session({
     secret: process.env.GOOGLE_CLIENT_SECRET,
