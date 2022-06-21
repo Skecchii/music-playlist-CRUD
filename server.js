@@ -17,14 +17,14 @@ require('dotenv').config()
 require('./config/database')
 require('./config/googlePassport')
 
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
 
-app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
 app.use(methodOverride('_method'))
+
+app.set('port', PORT);
 
 app.use(session({
     secret: process.env.GOOGLE_CLIENT_SECRET,
