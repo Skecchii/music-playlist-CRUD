@@ -1,11 +1,12 @@
 const express = require('express')
 const app = express()
-const PORT = normalizePort(process.env.PORT || '4000')
 const path = require('path')
 const morgan = require('morgan')
 const passport = require('passport')
 const session = require('express-session')
 const methodOverride = require('method-override')
+
+const PORT = normalizePort(process.env.PORT || '4000')
 
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
