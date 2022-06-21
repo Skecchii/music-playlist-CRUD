@@ -35,10 +35,6 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.get('/', (req, res) => {
-    res.render('login')
-})
-
 app.use(authRoutes)
 app.use('/user', userRoutes)
 app.use('/playlist', playlistRoutes)
