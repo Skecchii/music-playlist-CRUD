@@ -91,6 +91,7 @@
         width: 160px;
         background-color: lightgray;
         opacity: 50%;
+        position: relative;
     }
 
     a {
@@ -105,12 +106,12 @@
     }
 
     .deleteBtn {
-        font-size: 30px;
-        margin-left: 135px;
-        opacity: 40%;
         position: absolute;
-        top: 405px;
-        padding-top: -10px;
+        top: 0;
+        right: 0;
+        margin-top: -6px;
+        font-size: 30px;
+        opacity: 40%;
         border: none;
         background: none;
     }
@@ -122,13 +123,15 @@
     }
 
     .editBtn {
-        margin-left: -3px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 5px;
+        flex-direction: column;
         border: none;
         background: none;
         font-size: 22px;
         opacity: 40%;
-        position: absolute;
-        top: 415px;
     }
 
     .editBtn:hover {
@@ -159,16 +162,19 @@
     <div class="playlist-grid">
         <% playlists.forEach(playlist => { %>
             <div class="playlist-name">
-                <div class="image"></div>
-                <a href="/playlist/<%= playlist.id %>"><%= playlist.name %></a>
-                <form action="/playlist/<%= playlist._id %>?_method=DELETE" method="POST">
-                    <button class="deleteBtn" type="submit">x</button>
-                </form>
-                <div>
-                    <form action="/playlist/<%= playlist._id %>/edit">
-                        <button class="editBtn fa fa-edit" type="submit"></button>
-                    </form>
+                <div class="image">
+                    <div>
+                        <form action="/playlist/<%= playlist._id %>?_method=DELETE" method="POST">
+                            <button class="deleteBtn" type="submit">x</button>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="/playlist/<%= playlist._id %>/edit">
+                            <button class="editBtn fa fa-edit" type="submit"></button>
+                        </form>
+                    </div>
                 </div>
+                <a href="/playlist/<%= playlist._id %>"><%= playlist.name %></a>
             </div>
     <% }) %>
     </div>

@@ -14,25 +14,12 @@ const createPlaylist = (req, res) => {
     })
 }
 
-// const playlistDetails = (req, res) => {
-//     Playlist.findById(req.params.playlistId, (err, playlist) => {
-//         if (err) {
-//             res.status(400).json(err)
-//             return
-//         }
-//         Tracks.find({}, (err, tracks) => {
-//             res.render('track/tracks', { playlist, tracks})
-//         })
-//     })
-// }
-
 const playlistDetails = (req, res) => {
     Playlist.findById(req.params.playlistId, (err, playlist) => {
         if (err) {
             res.status(400).json(err)
             return
         }
-        console.log(playlist.tracks)
         res.render('track/tracks', { playlist })
     })
 }

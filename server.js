@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 app.use(authRoutes)
 app.use('/user', userRoutes)
 app.use('/playlist', playlistRoutes)
-app.use('/track', trackRoutes)
+app.use('/playlist', trackRoutes)
 
 app.use((req,res, next) => {
     res.locals.user = req.user

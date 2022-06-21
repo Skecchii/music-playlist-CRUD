@@ -52,7 +52,7 @@
     }
 
     .addBtn {
-        margin-left: 530px;
+        margin-left: 70px;
         border-radius: 25px;
         font-size: 15px;
         width: 120px;
@@ -71,7 +71,7 @@
     .playlist-table {
         color: white;
         margin-left: 70px;
-        margin-top: 12px;
+        margin-top: 45px;
         font-size: 36px;
     }
 
@@ -116,7 +116,7 @@
         font-size: 18px;
         position: absolute;
         left: 80px;
-        top: 234px
+        top: 265px
     }
 
     .deleteBtn {
@@ -136,7 +136,7 @@
         <%= playlist.name%>
     </div>
     <div>
-        <form action="/track/new">
+        <form action="/playlist/<%= playlist._id %>/track/new">
             <button class="addBtn" type="submit">add new track</button>
         </form>
     </div>
@@ -149,6 +149,7 @@
         </thead>
         <tbody>
             <% playlist.tracks.forEach(track => { %>
+                <% console.log(playlist) %>
                 <tr>
                     <td>
                         <div class="title-image">
@@ -158,7 +159,7 @@
                         <p><%= track.artist %></p>
                     </td>
                     <th class="remove-th">
-                        <form action="/track/<%= track._id %>?_method=DELETE" method="POST">
+                        <form action="/playlist/<%= playlist._id %>/track/<%= track._id %>?_method=DELETE" method="POST">
                             <button class="removeBtn" type="submit">X</button>
                         </form>
                     </th>

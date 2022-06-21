@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 const trackCtrls = require('../controllers/trackControls')
 
-router.get('/new', trackCtrls.addTrackForm)
+router.get('/:playlistId/track/new', trackCtrls.addTrackForm)
 
-router.delete('/:trackId', trackCtrls.removeTrack)
+router.delete('/:playlistId/track/:trackId', trackCtrls.removeTrack)
 
 module.exports = router
