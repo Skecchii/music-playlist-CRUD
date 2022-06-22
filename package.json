@@ -4,6 +4,7 @@
   "description": "A playlist app for users to organize their favorite music tracks.",
   "main": "server.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
